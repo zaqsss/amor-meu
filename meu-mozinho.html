@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 ZAQ & MARY - Nosso Amor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b6b;
+            --primary-dark: #ff5252;
+            --primary-light: #ff8787;
+            --secondary: #74b9ff;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --gold: #fdcb6e;
+            --purple: #a29bfe;
+            --gradient: linear-gradient(135deg, #ff6b6b 0%, #fd79a8 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(255, 107, 107, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '💕';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(253, 121, 168, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .couple-names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .love-quote {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .heart-divider {
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 2rem 0;
+        }
+
+        /* Seção de Fotos */
+        .photos {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+        }
+
+        .photos-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover .photo-image img {
+            transform: scale(1.05);
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem;
+            z-index: 3;
+        }
+
+        .photo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Contador de Tempo Juntos - SEM ANIMAÇÃO */
+        .counter {
+            padding: 6rem 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .counter-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .counter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-counter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .time-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .start-date {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Memórias */
+        .memories {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .memories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .memory-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .memory-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .memory-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Nova Seção: Cartinha Azeda */
+        .letter-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .letter-envelope {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-envelope::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .letter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .letter-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .letter-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .letter-signature {
+            text-align: right;
+            margin-top: 2rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .bosta-goods {
+            background: linear-gradient(45deg, var(--gold), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-style: italic;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 0 0.3rem;
+            transform: rotate(-2deg);
+            animation: bounce 2s infinite;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-heart {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .footer-names {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-light);
+        }
+
+        /* Apenas o botão de música */
+        .music-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .music-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Animações */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-5px) rotate(-2deg); }
+        }
+
+        .footer-heart {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .couple-names {
+                font-size: 2.5rem;
+            }
+
+            .love-quote {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .time-number {
+                font-size: 2rem;
+            }
+
+            .letter-title {
+                font-size: 2rem;
+            }
+
+            .letter-envelope {
+                padding: 2rem;
+            }
+        }
+
+        /* Placeholder quando não tem foto */
+        .photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            gap: 1rem;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-heart"></i>
+                <span>ZAQ & MARY</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#photos">Nossas Fotos</a></li>
+                <li><a href="#counter">Nosso Tempo</a></li>
+                <li><a href="#memories">Nossa História</a></li>
+                <li><a href="#letter">Cartinha</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="couple-names">ZAQ & MARY</h1>
+            <p class="love-quote">"Em seu abraço encontrei meu lar, em seu sorriso minha paz, em seu amor minha eternidade."</p>
+            <div class="heart-divider">💖</div>
+            <p style="font-size: 1.25rem; color: #666; margin-bottom: 2rem;">
+                Juntos desde 27 de Junho de 2024
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção de Fotos -->
+    <section class="photos" id="photos">
+        <div class="section-header">
+            <h2 class="section-title">Nossos Momentos</h2>
+            <p class="section-subtitle">Cada instante ao seu lado é especial</p>
+        </div>
+        
+        <div class="photos-grid">
+            <!-- Foto do Casal -->
+            <div class="photo-card">
+                <div class="photo-image">
+                    <img src="foto-nossa.jpeg" alt="Nossa foto juntos" 
+                         onerror="this.style.display='none'; document.getElementById('placeholder-casal').style.display='flex';">
+                    
+                    <div id="placeholder-casal" class="photo-placeholder">
+                        <i class="fas fa-heart" style="font-size: 3rem; color: var(--primary);"></i>
+                        <div>
+                            <p>Nossa foto juntos 💑</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-info">
+                    <h3 class="photo-title">Nós Dois 💑</h3>
+                    <p class="photo-description">O casal mais feliz do mundo!</p>
+                </div>
+            </div>
+            
+            <!-- Foto Dela -->
+            <div class="photo-card">
+                <div class="photo-image">
+                    <img src="foto-dela.jpeg" alt="Foto da minha princesa" 
+                         onerror="this.style.display='none'; document.getElementById('placeholder-dela').style.display='flex';">
+                    
+                    <div id="placeholder-dela" class="photo-placeholder" style="display: none;">
+                        <i class="fas fa-crown" style="font-size: 3rem; color: var(--gold);"></i>
+                        <div>
+                            <p>Minha princesa 👑</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-info">
+                    <h3 class="photo-title">Minha Princesa 👑</h3>
+                    <p class="photo-description">A mulher mais linda do mundo!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contador de Tempo Juntos - SEM ANIMAÇÃO -->
+    <section class="counter" id="counter">
+        <div class="counter-content">
+            <h2 class="counter-title">Nosso Tempo Juntos</h2>
+            <div class="time-counter">
+                <div class="time-unit">
+                    <span class="time-number" id="days">0</span>
+                    <span class="time-label">Dias Juntos</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="hours">0</span>
+                    <span class="time-label">Horas Juntos</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="minutes">0</span>
+                    <span class="time-label">Minutos Juntos</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="seconds">0</span>
+                    <span class="time-label">Segundos Juntos</span>
+                </div>
+            </div>
+            <p class="start-date">Desde 27 de Junho de 2024 💕</p>
+        </div>
+    </section>
+
+    <!-- Seção de Memórias -->
+    <section class="memories" id="memories">
+        <div class="section-header">
+            <h2 class="section-title">Nossa História</h2>
+            <p class="section-subtitle">Momentos especiais que guardamos no coração</p>
+        </div>
+        
+        <div class="memories-grid">
+            <div class="memory-card">
+                <div class="memory-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="memory-title">Primeiro Encontro</h3>
+                <p class="memory-description">
+                    O dia em que nossas vidas se cruzaram e tudo começou a fazer sentido.
+                </p>
+            </div>
+            
+            <div class="memory-card">
+                <div class="memory-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="memory-title">Primeiro Beijo</h3>
+                <p class="memory-description">
+                    Aquele momento mágico que confirmou que éramos feitos um para o outro.
+                </p>
+            </div>
+            
+            <div class="memory-card">
+                <div class="memory-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="memory-title">Nosso Jeito</h3>
+                <p class="memory-description">
+                    As risadas, os segredos, os sonhos... Tudo é melhor quando estamos juntos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nova Seção: Cartinha Azeda -->
+    <section class="letter-section" id="letter">
+        <div class="letter-container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Cartinha Especial</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Uma mensagem do coração</p>
+            </div>
+            
+            <div class="letter-envelope">
+                <div class="letter-header">
+                    <h3 class="letter-title">Para Minha Azeda</h3>
+                    <p class="letter-subtitle">"Porque até no azedume você é doce pra mim"</p>
+                </div>
+                
+                <div class="letter-content">
+                    <p>Minha querida Azeda,</p>
+                    
+                    <p style="margin: 1.5rem 0;">
+                        Escrevo esta cartinha com um sorriso no rosto, lembrando de todos os momentos que temos vivido juntos. 
+                        Você chegou na minha vida como uma tempestade de emoções - doce, intensa, às vezes azedinha, 
+                        mas sempre <span class="bosta-goods">minha bosta goods</span> no meio de tudo.
+                    </p>
+                    
+                    <p style="margin: 1.5rem 0;">
+                        E quando digo que você é <span class="bosta-goods">minha bosta goods</span>, é porque mesmo nos dias mais difíceis, 
+                        mesmo quando estamos de cara feia ou discutindo por bobagens, no fundo você sempre será a pessoa 
+                        que eu escolhi para dividir minha vida. É essa autenticidade, essa capacidade de ser você mesma 
+                        sem medo, que me faz te amar cada dia mais.
+                    </p>
+                    
+                    <p style="margin: 1.5rem 0;">
+                        Você é a combinação perfeita de doce e azedo, de risadas e seriedade, de romance e loucura. 
+                        E eu amo cada pedacinho disso. Amo quando você faz aquele bico característico, amo quando 
+                        seus olhos brilham de felicidade, amo até quando você está emburrada - porque sei que no fundo 
+                        existe um amor gigantesco que nos une.
+                    </p>
+                    
+                    <p style="margin: 1.5rem 0;">
+                        Obrigado por ser exatamente quem você é. Obrigado por ser <span class="bosta-goods">minha bosta goods</span> 
+                        em todos os sentidos - minha parceira, minha melhor amiga, minha paixão, meu porto seguro. 
+                        Não trocaria nossa história por nada nesse mundo.
+                    </p>
+                    
+                    <p>Com todo o meu amor,</p>
+                </div>
+                
+                <div class="letter-signature">
+                    Seu AZEDO 💖
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="footer-quote">"O amor é a única coisa que cresce quando se reparte."</p>
+            <p class="footer-names">ZAQ & MARY</p>
+            
+            <!-- Link da música começando no segundo 10 -->
+            <a href="https://www.youtube.com/watch?v=56oZ7C8Cn6k&list=RD56oZ7C8Cn6k&start_radio=1&t=10s" class="music-link" target="_blank">
+                <i class="fas fa-music"></i> Nossa Música: Night Like This
+            </a>
+            
+            <p style="opacity: 0.8; margin-top: 2rem;">
+                Para toda a eternidade 💫<br>
+                <small style="opacity: 0.6;">Criado com 💖 especialmente para nós</small>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contador de tempo juntos - SEM ANIMAÇÃO
+        function updateCounter() {
+            const startDate = new Date('2024-06-27T00:00:00');
+            const now = new Date();
+            const diff = now - startDate;
+
+            const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const totalHours = Math.floor(diff / (1000 * 60 * 60));
+            const totalMinutes = Math.floor(diff / (1000 * 60));
+            const totalSeconds = Math.floor(diff / 1000);
+
+            // Atualiza diretamente sem animação
+            document.getElementById('days').textContent = totalDays;
+            document.getElementById('hours').textContent = totalHours;
+            document.getElementById('minutes').textContent = totalMinutes;
+            document.getElementById('seconds').textContent = totalSeconds;
+        }
+
+        // Atualizar contador a cada segundo
+        setInterval(updateCounter, 1000);
+        updateCounter(); // Chamar imediatamente
+
+        // Efeito de digitação no título
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            
+            typing();
+        }
+
+        // Iniciar efeito de digitação quando a página carregar
+        window.addEventListener('load', function() {
+            const coupleNames = document.querySelector('.couple-names');
+            const originalText = coupleNames.textContent;
+            typeWriter(coupleNames, originalText, 150);
+        });
+
+        // Efeito especial para a cartinha
+        document.addEventListener('DOMContentLoaded', function() {
+            const letterEnvelope = document.querySelector('.letter-envelope');
+            
+            letterEnvelope.addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
